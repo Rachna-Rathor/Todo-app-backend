@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="todo">Todo App</h1>
+    <input type="text" id="todoInput" placeholder="Enter your todo">
+    <button onclick="addTodo()" class="btn">Add Todo</button>
+    <ul id="todoList" class="todo-list"></ul>
+
+    <script>
+        // Function to add a new todo
+        function addTodo() {
+            var todoInput = document.getElementById('todoInput');
+            var todoText = todoInput.value.trim();
+            if (todoText !== '') {
+                var todoList = document.getElementById('todoList');
+                var todoItem = document.createElement('li');
+                todoItem.classList.add('todo-item');
+                var checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.onclick = function() {
+                    markCompleted(this);
+                };
+                var todoTextSpan = document.createElement('span');
+                todoTextSpan.textContent = todoText;
+                todoItem.appendChild(checkbox);
+                todoItem.appendChild(todoTextSpan);
+                todoList.appendChild(todoItem);
+                todoInput.value = '';
+            }
+        }
+
+        // Function to mark a todo as completed
+        function markCompleted(checkbox) {
+            var todoTextSpan = checkbox.nextElementSibling;
+            if (checkbox.checked) {
+                todoTextSpan.style.textDecoration = 'line-through';
+                todoTextSpan.style.color = '#888';
+                checkbox.parentElement.classList.add('completed');
+            } else {
+                todoTextSpan.style.textDecoration = 'none';
+                todoTextSpan.style.color = 'inherit';
+                checkbox.parentElement.classList.remove('completed');
+            }
+        }
+    </script>
+</body>
+</html>

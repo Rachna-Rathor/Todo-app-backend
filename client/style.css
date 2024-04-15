@@ -1,0 +1,19 @@
+.todo{
+    list-style-type: none;
+    padding: 0;
+}
+.btn{
+    
+}
+.todo-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+.todo-item.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
